@@ -1,32 +1,102 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-<title>Dashboard</title>
-<link 
-rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+{% extends "base.html" %}
 
 
-<body>
+
+{% block content %}
 
 
-<h1>
-Welcome to Dashboard
-</h1>
+<div class="dashboard">
 
 
-<h3>
-AI Interview Assistant
-</h3>
+    <h1>
+        Welcome to Dashboard
+    </h1>
 
 
-<button>
-Start Interview
-</button>
+    <p>
+        Prepare yourself for your next interview with AI.
+    </p>
 
 
-</body>
 
-</html>
+    <div class="cards">
+
+
+
+        <div class="card">
+
+
+            <h2>
+                📄 Resume Analysis
+            </h2>
+
+
+            <p>
+                Upload your resume and let AI extract your skills,
+                projects and experience.
+            </p>
+
+
+        </div>
+
+
+
+
+
+        <div class="card">
+
+
+            <h2>
+                🤖 AI Interview
+            </h2>
+
+
+            <p>
+                Start a realistic interview with your AI interviewer.
+            </p>
+
+
+            <br>
+
+
+            <a class="btn" href="/start-interview">
+
+            Start Interview
+
+            </a>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="card">
+
+
+            <h2>
+                📊 Performance Report
+            </h2>
+
+
+            <p>
+                View your interview scores,
+                feedback and improvement areas.
+            </p>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

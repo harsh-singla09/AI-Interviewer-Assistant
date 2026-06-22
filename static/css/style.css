@@ -1,29 +1,224 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
 body{
 
-font-family: Arial, sans-serif;
+    font-family:
+    'Segoe UI',
+    sans-serif;
 
-text-align:center;
+    background:#0f172a;
 
-background:#f5f5f5;
-
-}
-
-
-h1{
-
-color:#222;
+    color:white;
 
 }
 
 
-button{
+/* Navbar */
 
-padding:10px 20px;
 
-border:none;
+.navbar{
 
-border-radius:5px;
+    display:flex;
 
-cursor:pointer;
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 50px;
+
+    background:#111827;
+
+}
+
+
+.logo{
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    color:#38bdf8;
+
+}
+
+
+.navbar a{
+
+    color:white;
+
+    text-decoration:none;
+
+    margin-left:25px;
+
+}
+
+
+
+/* Hero Section */
+
+
+.hero{
+
+    height:80vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+
+.hero h1{
+
+    font-size:55px;
+
+}
+
+
+.hero span{
+
+    color:#38bdf8;
+
+}
+
+
+.hero p{
+
+    margin:20px;
+
+    font-size:20px;
+
+    color:#cbd5e1;
+
+}
+
+
+
+.btn{
+
+    padding:14px 30px;
+
+    background:#38bdf8;
+
+    color:black;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+/* Dashboard */
+
+
+.dashboard{
+
+    padding:40px;
+
+}
+
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+.card{
+
+    background:#1e293b;
+
+    padding:30px;
+
+    border-radius:15px;
+
+}
+
+
+
+.card h2{
+
+    color:#38bdf8;
+
+}
+
+
+/* Interview Room */
+
+
+.interview-container{
+
+    display:flex;
+
+    gap:30px;
+
+    padding:40px;
+
+}
+
+
+.video-box{
+
+    flex:1;
+
+    height:400px;
+
+    background:black;
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.chat-box{
+
+    flex:1;
+
+    background:#1e293b;
+
+    border-radius:15px;
+
+    padding:20px;
+
+}
+
+
+
+.message{
+
+    background:#334155;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin:10px;
 
 }

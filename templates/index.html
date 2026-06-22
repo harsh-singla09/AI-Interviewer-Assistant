@@ -1,48 +1,35 @@
-<!DOCTYPE html>
-
-<html>
+{% extends "base.html" %}
 
 
-<head>
-
-<title>
-AI Interview Assistant
-</title>
-<link 
-rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-
-</head>
+{% block content %}
 
 
-<body>
+<section class="hero">
+
+    <div>
+
+        <h1>
+            Your Personal 
+            <span>
+                AI Interviewer
+            </span>
+        </h1>
 
 
-<h1>
-AI Virtual Interview Assistant
-</h1>
+        <p>
+            Practice real interviews using Artificial Intelligence,
+            voice interaction and webcam analysis.
+        </p>
 
 
-<p>
-Practice interviews with your personal AI interviewer.
-</p>
+        <a class="btn" href="/dashboard">
+            Start Interview
+        </a>
 
 
-<a href="/login">
-Login
-</a>
+    </div>
+
+</section>
 
 
-<br><br>
-
-
-<a href="/dashboard">
-Dashboard
-</a>
-
-
-
-</body>
-
-
-</html>
+{% endblock %}

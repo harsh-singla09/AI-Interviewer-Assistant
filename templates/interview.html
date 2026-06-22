@@ -1,36 +1,113 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-<title>
-Interview Room
-</title>
-
-<link 
-rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+{% extends "base.html" %}
 
 
-<body>
+
+{% block content %}
 
 
-<h1>
-AI Interview Room
-</h1>
+
+<div class="interview-container">
+
+
+
+    <!-- Webcam Section -->
+
+    <div class="video-box">
+
+
+        <div>
+
+            <h2>
+                📷 Webcam
+            </h2>
+
+
+            <p>
+                Camera feed will appear here
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- AI Interview Section -->
+
+
+    <div class="chat-box">
+
+
+        <h2>
+            🤖 AI Interviewer
+        </h2>
 
 
 <p>
-AI Interviewer will appear here.
+
+Interview ID:
+
+{{ interview_id }}
+
 </p>
 
 
-<button>
-Start
-</button>
+
+        <div class="message">
+
+            Hello! Welcome to your AI interview.
+
+        </div>
 
 
-</body>
 
-</html>
+
+        <div class="message">
+
+            Please introduce yourself.
+
+        </div>
+
+
+
+
+        <br>
+
+
+        <input 
+        type="text"
+        placeholder="Type your answer..."
+        style="
+        width:90%;
+        padding:12px;
+        border-radius:8px;
+        border:none;
+        ">
+
+
+        <br><br>
+
+
+
+        <button class="btn">
+
+            Send Answer
+
+        </button>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+{% endblock %}

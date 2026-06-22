@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+AI Interview Assistant
+</title>
+
+
+<link rel="stylesheet"
+href="{{url_for('static',
+filename='css/style.css')}}">
+
+
+</head>
+
+
+<body>
+
+
+<div class="navbar">
+
+
+<div class="logo">
+
+AI Interview AI
+
+</div>
+
+
+<div>
+
+
+<a href="/">
+Home
+</a>
+
+
+<a href="/dashboard">
+Dashboard
+</a>
+
+
+<a href="/interview">
+Interview
+</a>
+
+
+</div>
+
+
+</div>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}">
+</script>
+
+</body>
+
+</html>
