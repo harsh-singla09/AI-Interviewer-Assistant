@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <h1>
+        AI Generated Questions
+    </h1>
+
+    <br>
+
+    <div class="card">
+
+        <pre style="
+        white-space: pre-wrap;
+        color:white;
+        ">
+
+{{ questions }}
+
+        </pre>
+
+    </div>
+
+</div>
+
+{% endblock %}

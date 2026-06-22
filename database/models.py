@@ -72,11 +72,15 @@ class Answer(db.Model):
         primary_key=True
     )
 
-    question_id = db.Column(
+    interview_id = db.Column(
         db.Integer
     )
 
-    answer_text = db.Column(
+    question = db.Column(
+        db.Text
+    )
+
+    answer = db.Column(
         db.Text
     )
 

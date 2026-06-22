@@ -11,8 +11,13 @@ from database import models
 from database.models import Interview
 
 from utils.resume_parser import extract_text_from_pdf
+from utils.information_extractor import extract_resume_info
+
+from AI.question_generator import generate_questions
 
 import os
+
+from flask import session
 
 
 
@@ -28,6 +33,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///interview.db"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+app.secret_key = "harsh_ai_interview"
 
 db.init_app(app)
 
@@ -173,6 +179,119 @@ def result():
     )
 
 
+@app.route("/generate-questions/<int:interview_id>")
+def generate_interview_questions(interview_id):
+
+    interview = Interview.query.get_or_404(
+        interview_id
+    )
+
+    extracted_text = extract_text_from_pdf(
+        interview.resume
+    )
+
+    resume_info = extract_resume_info(
+        extracted_text
+    )
+
+    questions = generate_questions(
+        resume_info
+    )
+
+    question_list = [
+        q.strip()
+        for q in questions.split("\n")
+        if q.strip()
+    ]
+
+    session["questions"] = question_list
+
+    session["current_question"] = 0
+
+    return redirect(
+        url_for(
+            "interview_session",
+            interview_id=interview_id
+        )
+    )
+
+
+@app.route(
+    "/interview-session/<int:interview_id>",
+    methods=["GET", "POST"]
+)
+def interview_session(interview_id):
+
+    questions = session.get(
+        "questions",
+        []
+    )
+
+    current = session.get(
+        "current_question",
+        0
+    )
+
+    if current >= len(questions):
+
+        return redirect(
+            url_for(
+                "interview_complete",
+                interview_id=interview_id
+            )
+        )
+
+    question = questions[current]
+
+    if request.method == "POST":
+
+        answer_text = request.form.get(
+            "answer"
+        )
+
+        answer = Answer(
+
+            interview_id=interview_id,
+
+            question=question,
+
+            answer=answer_text
+
+        )
+
+        db.session.add(answer)
+
+        db.session.commit()
+
+        session["current_question"] += 1
+
+        return redirect(
+            url_for(
+                "interview_session",
+                interview_id=interview_id
+            )
+        )
+
+    return render_template(
+        "interview_session.html",
+        question=question,
+        question_number=current + 1
+    )
+
+@app.route(
+    "/interview-complete/<int:interview_id>"
+)
+def interview_complete(interview_id):
+
+    answers = Answer.query.filter_by(
+        interview_id=interview_id
+    ).all()
+
+    return render_template(
+        "interview_complete.html",
+        answers=answers
+    )
+
 
 @app.route("/resume-analysis/<int:interview_id>")
 def resume_analysis(interview_id):
@@ -189,13 +308,18 @@ def resume_analysis(interview_id):
 
 
     extracted_text = extract_text_from_pdf(
-        interview.resume
+    interview.resume
+    )
+
+    resume_info = extract_resume_info(
+        extracted_text
     )
 
 
     return render_template(
         "resume_analysis.html",
         extracted_text=extracted_text,
+        resume_info=resume_info,
         interview=interview
     )
 

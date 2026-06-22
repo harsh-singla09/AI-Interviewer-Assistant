@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <div class="card">
+
+        <h2>
+            Question {{ question_number }}
+        </h2>
+
+        <br>
+
+        <h3>
+            {{ question }}
+        </h3>
+
+        <br>
+
+        <form method="POST">
+
+            <textarea
+                name="answer"
+                rows="8"
+                style="
+                width:100%;
+                padding:15px;
+                border-radius:10px;
+                "
+                required>
+            </textarea>
+
+            <br><br>
+
+            <button
+                class="btn"
+                type="submit">
+
+                Next Question
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

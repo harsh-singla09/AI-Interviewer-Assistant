@@ -260,6 +260,13 @@ body{
     margin-bottom: 10px;
 }
 
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
 .resume-status {
     margin-bottom: 20px;
     color: #cbd5e1;

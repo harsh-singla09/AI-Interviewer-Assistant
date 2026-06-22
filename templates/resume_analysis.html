@@ -10,29 +10,60 @@
 
     <br>
 
-    <h3>
-        Interview #{{ interview.id }}
-    </h3>
-
-    <br>
-
     <div class="card">
 
         <h2>
-            Extracted Resume Text
+            Candidate Information
         </h2>
 
         <br>
 
-        <pre
-        style="
-        white-space: pre-wrap;
-        color:white;
-        ">
+        <p>
+            <strong>Name:</strong>
+            {{ resume_info.name }}
+        </p>
 
-{{ extracted_text }}
+        <br>
 
-        </pre>
+        <h3>Skills</h3>
+
+        <ul>
+
+            {% for skill in resume_info.skills %}
+
+            <li>{{ skill }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <br>
+
+        <h3>Projects</h3>
+
+        <ul>
+
+            {% for project in resume_info.projects %}
+
+            <li>{{ project }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <br>
+
+        <h3>Education</h3>
+
+        <ul>
+
+            {% for edu in resume_info.education %}
+
+            <li>{{ edu }}</li>
+
+            {% endfor %}
+
+        </ul>
 
     </div>
 

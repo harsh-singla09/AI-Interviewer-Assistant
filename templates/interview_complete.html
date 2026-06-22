@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <h1>
+        Interview Completed 🎉
+    </h1>
+
+    <br>
+
+    {% for answer in answers %}
+
+    <div class="card">
+
+        <h3>
+            {{ answer.question }}
+        </h3>
+
+        <br>
+
+        <p>
+            {{ answer.answer }}
+        </p>
+
+    </div>
+
+    <br>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
