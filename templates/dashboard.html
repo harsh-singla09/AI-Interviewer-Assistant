@@ -1,102 +1,92 @@
 {% extends "base.html" %}
 
-
-
 {% block content %}
-
 
 <div class="dashboard">
 
+    <div class="dashboard-header">
 
-    <h1>
-        Welcome to Dashboard
-    </h1>
+        <h1>Dashboard</h1>
 
-
-    <p>
-        Prepare yourself for your next interview with AI.
-    </p>
-
-
-
-    <div class="cards">
-
-
-
-        <div class="card">
-
-
-            <h2>
-                📄 Resume Analysis
-            </h2>
-
-
-            <p>
-                Upload your resume and let AI extract your skills,
-                projects and experience.
-            </p>
-
-
-        </div>
-
-
-
-
-
-        <div class="card">
-
-
-            <h2>
-                🤖 AI Interview
-            </h2>
-
-
-            <p>
-                Start a realistic interview with your AI interviewer.
-            </p>
-
-
-            <br>
-
-
-            <a class="btn" href="/start-interview">
-
-            Start Interview
-
-            </a>
-
-
-        </div>
-
-
-
-
-
-
-        <div class="card">
-
-
-            <h2>
-                📊 Performance Report
-            </h2>
-
-
-            <p>
-                View your interview scores,
-                feedback and improvement areas.
-            </p>
-
-
-        </div>
-
-
-
+        <a class="btn" href="/start-interview">
+            + Create Interview
+        </a>
 
     </div>
 
+    <div class="interview-grid">
+
+        {% for interview in interviews %}
+
+        <div class="interview-card">
+
+            <div class="interview-title">
+                Interview #{{ interview.id }}
+            </div>
+
+            <div class="resume-status">
+
+                <strong>Resume:</strong>
+
+                {% if interview.resume %}
+                    Uploaded ✅
+                {% else %}
+                    Not Uploaded ❌
+                {% endif %}
+
+            </div>
+
+            <form
+                class="upload-section"
+                action="/upload-resume/{{ interview.id }}"
+                method="POST"
+                enctype="multipart/form-data">
+
+                <input
+                    class="file-input"
+                    type="file"
+                    name="resume"
+                    accept=".pdf"
+                    required>
+
+                <br><br>
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    Upload Resume
+
+                </button>
+
+            </form>
+
+            <div class="button-group">
+
+                <a
+                    class="btn"
+                    href="/interview/{{ interview.id }}">
+
+                    Start Interview
+
+                </a>
+
+                <a
+                    class="btn"
+                    href="/resume-analysis/{{ interview.id }}">
+
+                    Analyze Resume
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
 
 </div>
-
-
 
 {% endblock %}

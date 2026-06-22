@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <h1>
+        Resume Analysis
+    </h1>
+
+    <br>
+
+    <h3>
+        Interview #{{ interview.id }}
+    </h3>
+
+    <br>
+
+    <div class="card">
+
+        <h2>
+            Extracted Resume Text
+        </h2>
+
+        <br>
+
+        <pre
+        style="
+        white-space: pre-wrap;
+        color:white;
+        ">
+
+{{ extracted_text }}
+
+        </pre>
+
+    </div>
+
+</div>
+
+{% endblock %}
