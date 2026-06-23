@@ -4,7 +4,7 @@ from ollama import chat
 def generate_questions(resume_info):
 
     prompt = f"""
-You are a senior software engineer conducting an internship interview.
+You are a professional interviewer.
 
 Candidate Skills:
 {', '.join(resume_info['skills'])}
@@ -12,18 +12,14 @@ Candidate Skills:
 Projects:
 {', '.join(resume_info['projects'])}
 
-Generate:
+Generate exactly 10 interview questions.
 
-- 5 Python questions
-- 3 Flask questions
-- 3 SQL questions
-- 4 project-specific questions
-- 2 HR questions
-
-Do not provide answers.
-
-Only provide questions.
-""" 
+Rules:
+- Output only questions.
+- Do not write introductions.
+- Do not write explanations.
+- One question per line.
+"""
 
     response = chat(
         model="llama3.2",

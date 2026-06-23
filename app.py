@@ -8,7 +8,7 @@ from flask import (
 from database.db import db
 from database import models
 
-from database.models import Interview
+from database.models import Answer, Interview
 
 from utils.resume_parser import extract_text_from_pdf
 from utils.information_extractor import extract_resume_info
@@ -198,11 +198,21 @@ def generate_interview_questions(interview_id):
         resume_info
     )
 
-    question_list = [
-        q.strip()
-        for q in questions.split("\n")
-        if q.strip()
-    ]
+    print(questions)
+
+    question_list = []
+
+    for line in questions.split("\n"):
+
+        line = line.strip()
+
+        if not line:
+            continue
+
+        if line.lower().startswith("here are"):
+            continue
+
+        question_list.append(line)
 
     session["questions"] = question_list
 
